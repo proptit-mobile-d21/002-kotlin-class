@@ -1,3 +1,5 @@
 # Bài tập
-- Em hãy tự viết ra một chương trình ví dụ, không giới hạn chủ đề, độ phức tạp nhỏ (đừng code ProGApp lite), sử dụng kiến thức em đã tìm hiểu được về buổi học này
+- Code một cái tool/chương trình NHỎ NHỎ NHỎ, sử dụng kiến thức các em đã tìm hiểu trong bài này.
+- Ví dụ: calculator, tool danh bạ: lưu số điện thoại mới, tìm một số điện thoại
+- Được dùng OOP, nhưng đừng quá cầu kỳ
 - Nhớ checkout, pull request và request review các anh mentor.
