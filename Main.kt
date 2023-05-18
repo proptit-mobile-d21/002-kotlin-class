@@ -1,12 +1,23 @@
-import java.lang.ArithmeticException
 import java.lang.NumberFormatException
 import java.util.*
+import kotlin.ArithmeticException
 
-class Calculator(val x : Double = 0.0, val y : Double = 0.0) {
-    fun add() = x + y
-    fun sub() = x - y
-    fun mul() = x * y
-    fun div() = if(y == 0.0) -1 else x/y
+class Calculator(private val x : Double = 0.0, private val y : Double = 0.0) {
+
+    private fun add() = x + y
+    private fun sub() = x - y
+    private fun mul() = x * y
+    private fun div() = if(y == 0.0) -1.0 else x/y
+
+    public fun cal(choice : Int) : Double? {
+        when(choice){
+            1 -> return add()
+            2 -> return sub()
+            3 -> return mul()
+            4 -> if (div() != -1.0) return div() else throw ArithmeticException()
+        }
+        return null
+    }
 }
 
 fun main(){
@@ -31,10 +42,11 @@ fun main(){
         choice = input.next().toInt()
         when(choice){
             0 -> return
-            1 -> println("$x + $y = ${calculator.add()}")
-            2 -> println("$x - $y = ${calculator.sub()}")
-            3 -> println("$x * $y = ${calculator.mul()}")
-            4 -> if(calculator.div() != -1) println("$x / $y = ${calculator.div()}") else throw ArithmeticException()
+            1 -> print("$x + $y = ")
+            2 -> print("$x - $y = ")
+            3 -> print("$x * $y = ")
+            4 -> print("$x / $y = ")
         }
+        println(calculator.cal(choice))
     }
 }
