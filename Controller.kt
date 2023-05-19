@@ -1,9 +1,22 @@
-val list = mutableListOf<Model>()
-class Controller(var model: Model) {
-    fun AddList(){
-        list.add(model)
+
+class  Controller(val view: View) {
+    val list = mutableListOf<Model>()
+
+    init {
+        while(true){
+            var choice = view.show()
+            when(choice){
+                1-> addList()
+                2->findNumber(view.findNum())
+                3->showList()
+                4->break
+            }
+        }
     }
-    fun FindNumber(name:String){
+    fun addList(){
+        list.add(view.addNew())
+    }
+    fun findNumber(name:String){
         var x = 0
         for(i in list){
             if(i.name == name){
@@ -12,5 +25,8 @@ class Controller(var model: Model) {
             }
         }
         if(x == 0) println("cannot find number")
+    }
+    fun showList(){
+        for(i in list) println("Name: ${i.name}, Number: ${i.number}")
     }
 }
