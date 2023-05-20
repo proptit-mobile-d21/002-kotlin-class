@@ -1,8 +1,9 @@
 package com.example.demo
 
-val list = mutableListOf<Model>()
-
 class Controller {
+
+    private val list = mutableListOf<Model>()
+
     fun addContact(model: Model) {
         list.add(model)
     }
@@ -34,10 +35,14 @@ class Controller {
     }
 
     fun showContact() {
-        println("Phonebook:")
-        var d = 1
-        for (it in list) {
-            println("${d++}. ${it.name}: ${it.phoneNumber}")
+        if (list.isEmpty())
+            println("Empty contacts")
+        else {
+            println("Phonebook:")
+            var d = 1
+            for (it in list) {
+                println("${d++}. ${it.name}: ${it.phoneNumber}")
+            }
         }
     }
 }
