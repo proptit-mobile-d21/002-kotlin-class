@@ -1,1 +1,0 @@
-class Model(var name:String, var number:String?)

@@ -1,4 +1,5 @@
-
 fun main(args: Array<String>) {
-    val app = Controller(View())
+    val app = View().run()
+
+
 }
