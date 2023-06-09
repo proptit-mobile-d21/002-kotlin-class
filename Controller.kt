@@ -2,9 +2,9 @@ package com.example.demo
 
 class Controller {
 
-    private val list = mutableListOf<Model>()
+    private val list = mutableListOf<Contact>()
 
-    fun addContact(model: Model) {
+    fun addContact(model: Contact) {
         list.add(model)
     }
 
