@@ -2,6 +2,7 @@ package com.example.demo
 
 class View {
     private val controller = Controller()
+    
     private fun showMenu() {
         println("       MENU        ")
         println("1. Add new contact")
@@ -10,6 +11,7 @@ class View {
         println("4. Exit")
         print("Enter your choice: ")
     }
+    
     fun run() {
         while (true) {
             showMenu()
@@ -19,8 +21,8 @@ class View {
                     val name: String = readln()
                     print("Phone number: ")
                     val phone: String = readln()
-                    val model = Model(name, phone)
-                   controller.addContact(model)
+                    val contact = Contact(name, phone)
+                    controller.addContact(contact)
                 }
                 2 -> {
                     println("1. Find by name")
@@ -30,11 +32,11 @@ class View {
                     if (find == 1) {
                         print("Enter name: ")
                         val name = readln()
-                        controller.findByName(name)
+                        println(controller.findByName(name))
                     } else if (find == 2) {
                         print("Enter phone number: ")
                         val phone = readln()
-                        controller.finByPhone(phone)
+                        println(controller.finByPhone(phone))
                     }
                 }
                 3 -> {
