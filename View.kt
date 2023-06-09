@@ -1,5 +1,5 @@
 class View(){
-    fun Show(){
+    fun showMenu(){
         while(true){
             println("._________________________.")
             println("|           MENU          |")
@@ -9,7 +9,8 @@ class View(){
             println("|4. Exit                  |")
             println("._________________________.")
             print("Your choice: ")
-            val choiceMenu = readLine()!!.toInt()
+            val choiceMenu = readln()!!.toInt()
+            val controller = Controller()
             when(choiceMenu){
                 1 -> {
                     print("Your name: ")
@@ -17,31 +18,27 @@ class View(){
                     print("Your phone number: ")
                     val phoneNumber = readln()
 
-                    val model = Model(name,phoneNumber)
-                    val controller = Controller()
+                    val model = Contact(name,phoneNumber)
                     controller.addPhoneNumber(model)
                 }
                 2 -> {
                     println("1. Find by name")
                     println("2. Find by phone number")
                     print("Your choice: ")
-                    val choiceFind = readLine()!!.toInt()
+                    val choiceFind = readln()!!.toInt()
                     if(choiceFind == 1){
                         print("Your name: ")
                         val name = readln()
-                        val controller = Controller()
                         controller.findByName(name)
                     }else if(choiceFind == 2){
                         print("Your phone number: ")
                         val phoneNumber = readln()
-                        val controller = Controller()
                         controller.findByPhoneNumber(phoneNumber)
                     }else{
                         println("Wrong !!!")
                     }
                 }
                 3 -> {
-                    val controller = Controller()
                     controller.showPhoneNumber()
                 }
                 4 -> break

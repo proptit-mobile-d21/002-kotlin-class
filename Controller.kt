@@ -1,6 +1,6 @@
-val list = mutableListOf<Model>()
+val list = mutableListOf<Contact>()
 class Controller(){
-    fun addPhoneNumber(model: Model){
+    fun addPhoneNumber(model: Contact){
         list.add(model)
     }
     fun findByName(name: String){
