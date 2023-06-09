@@ -8,29 +8,29 @@ class Controller {
         list.add(model)
     }
 
-    fun findByName(name: String) {
+    fun findByName(name: String): String {
         var exist = 0
         for (it in list) {
             if (it.name == name) {
                 exist = 1
-                println("${it.name}: ${it.phoneNumber}")
+               return "${it.name}: ${it.phoneNumber}"
             }
         }
         if (exist == 0) {
-            println("Cannot find contact")
+            return "Cannot find contact"
         }
     }
 
-    fun finByPhone(phone: String) {
+    fun finByPhone(phone: String): String {
         var exist = 0
         for (it in list) {
             if (it.phoneNumber == phone) {
                 exist = 1
-                println("${it.name}: ${it.phoneNumber}")
+                return "${it.name}: ${it.phoneNumber}"
             }
         }
         if (exist == 0) {
-            println("Cannot find contact")
+            return "Cannot find contact"
         }
     }
 
