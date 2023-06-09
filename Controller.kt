@@ -4,8 +4,8 @@ class Controller {
 
     private val list = mutableListOf<Contact>()
 
-    fun addContact(model: Contact) {
-        list.add(model)
+    fun addContact(contact: Contact) {
+        list.add(contact)
     }
 
     fun findByName(name: String): String {
