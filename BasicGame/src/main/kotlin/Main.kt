@@ -1,6 +1,6 @@
 import java.util.*
 
-class Manager{
+class NumberGuessGame{
     private var number : Int = 0;
     init {
         number = (0..100).random()
@@ -19,7 +19,7 @@ class Manager{
 }
 fun main() {
     val scanner = Scanner(System.`in`)
-    val manager = Manager()
+    val manager = NumberGuessGame()
     var answer : Int = 0
     var result : Int = -1
     while(result != 0){
