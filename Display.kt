@@ -19,7 +19,7 @@ class Display {
             val scanner = Scanner(System.`in`)
             val dish = Dish()
             print("Enter dish name: ")
-            dish.setName(scanner.nextLine())
+            dish.name = scanner.nextLine()
             println("Type \"End\" to end the ingredients list")
             while(true) {
                 print("Enter ingredient's name: ")
@@ -33,7 +33,6 @@ class Display {
                 val tmpAmount = scanner.nextLine().toDouble()
                 val ingredient = Ingredient(tmpName, tmpOrigin, tmpPrice)
                 dish.addIngredient(ingredient, tmpAmount)
-                dish.calculatePrice()
             }
             return dish
         }
