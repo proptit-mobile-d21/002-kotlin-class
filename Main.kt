@@ -2,21 +2,57 @@ import java.lang.NumberFormatException
 import java.util.*
 import kotlin.ArithmeticException
 
-enum class CalculatorOperator{
-    ADD,
-    SUB,
-    MUL,
-    DIV
-}
+sealed class Calculator(){
 
-fun cal(choice : CalculatorOperator, x : Double = 0.0, y : Double = 0.0) : Double{
-    when(choice){
-        CalculatorOperator.ADD -> return x + y
-        CalculatorOperator.SUB -> return x - y
-        CalculatorOperator.MUL -> return x * y
-        CalculatorOperator.DIV -> if(y != 0.0) return x/y else throw ArithmeticException()
+    class Add(private val x : Double , private val y : Double) : Calculator(){
+        fun print(){
+            println("$x + $y = ${x + y}")
+        }
+    }
+
+    class Sub(private val x : Double , private val y : Double) : Calculator(){
+        fun print(){
+            println("$x - $y = ${x - y}")
+        }
+    }
+
+    class Mul(private val x : Double , private val y : Double) : Calculator(){
+        fun print(){
+            println("$x * $y = ${x * y}")
+        }
+    }
+
+    class Div(private val x : Double, private val y : Double) : Calculator(){
+        fun print(){
+            if(y != 0.0) println("$x / $y = ${x / y}") else throw ArithmeticException()
+        }
     }
 }
+
+enum class CalculatorOperator(){
+    ADD{
+            override fun print(x : Double, y : Double) {
+                println("$x + $y = ${x + y}")
+            }
+       },
+    SUB{
+            override fun print(x : Double, y : Double) {
+                println("$x - $y = ${x - y}")
+            }
+       },
+    MUL{
+            override fun print(x : Double, y : Double) {
+                println("$x * $y = ${x * y}")
+            }
+       },
+    DIV{
+            override fun print(x : Double, y : Double) {
+                if(y != 0.0) println("$x / $y = ${x / y}") else throw ArithmeticException()
+            }
+    };
+    abstract fun print(x : Double, y : Double)
+}
+
 
 fun main(){
     val input = Scanner(System.`in`)
@@ -42,10 +78,10 @@ fun main(){
         choice = input.next().toIntOrNull() ?: throw NumberFormatException()
         when(choice){
             0 -> return
-            1 -> println("$x + $y = ${cal(CalculatorOperator.ADD, x1, y1)}")
-            2 -> println("$x - $y = ${cal(CalculatorOperator.SUB, x1, y1)}")
-            3 -> println("$x * $y = ${cal(CalculatorOperator.MUL, x1, y1)}")
-            4 -> println("$x / $y = ${cal(CalculatorOperator.DIV, x1, y1)}")
+            1 -> CalculatorOperator.ADD.print(x1, y1)
+            2 -> CalculatorOperator.SUB.print(x1, y1)
+            3 -> CalculatorOperator.MUL.print(x1, y1)
+            4 -> CalculatorOperator.DIV.print(x1, y1)
             else -> println("Wrong Number")
         }
     }
