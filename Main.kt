@@ -1,7 +1,7 @@
 import java.lang.IllegalArgumentException
 import java.util.Scanner
 
-class Calculator(private var a: Double = 0.0, private var b: Double = 0.0) {
+class Calculator(private val a: Double = 0.0, private val b: Double = 0.0) {
     fun add() = a + b
     fun subtract() = a - b
     fun multiply() = a * b
@@ -18,10 +18,11 @@ fun showMenu() {
     print("Enter your choice: ")
 }
 
-fun option() {
-    println("1. Continue to calculate with the last result")
-    println("2. Create new calculating")
-    println("3. Exit")
+fun showContinueActions() {
+    println("1. Other calculating with the same a or b")
+    println("2. Continue to calculate with the last result")
+    println("3. Create new calculating")
+    println("4. Exit")
     print(" Enter your option: ")
 }
 
@@ -34,6 +35,7 @@ fun main() {
     print("Enter b: ")
     var b = input.next().toDouble()
     var calculator = Calculator(a, b)
+    var result = 0.0
     var choice: Int? = null
     while (true) {
         showMenu()
@@ -42,17 +44,17 @@ fun main() {
         when (choice) {
             1 -> {
                 println("$a + $b = ${calculator.add()}")
-                a = calculator.add()
+                result = calculator.add()
             }
 
             2 -> {
                 println("$a - $b = ${calculator.subtract()}")
-                a = calculator.subtract()
+                result = calculator.subtract()
             }
 
             3 -> {
                 println("$a * $b = ${calculator.multiply()}")
-                a = calculator.multiply()
+                result = calculator.multiply()
             }
 
             4 -> {
@@ -61,28 +63,30 @@ fun main() {
                     throw IllegalArgumentException("Error divided by zero")
                 } else {
                     println("$a / $b = ${calculator.divide()}")
-                    a = calculator.divide()
+                    result = calculator.divide()
                 }
             }
         }
-        option()
+        showContinueActions()
         var opt: Int? = null
         opt = input.nextInt()
-        if(opt == 3) break
+        if(opt == 4) break
         when (opt) {
-            1 -> {
+            1-> continue
+            2 -> {
                 println("Enter b: ")
+                a = result
                 b = input.next().toDouble()
-                calculator = Calculator(a, b)
+                calculator = Calculator(a,b)
             }
 
-            2 -> {
+            3 -> {
                 println("Enter two number to begin calculating")
                 println("Enter a: ")
                 a = input.next().toDouble()
                 println("Enter b: ")
                 b = input.next().toDouble()
-                calculator = Calculator(a, b)
+                calculator = Calculator(a,b)
             }
         }
     }
